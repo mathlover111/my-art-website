@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>我的作品集</title>
+  <style>
+    body {
+      background-image: url('images/background.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: rgb(9, 115, 214);
+      margin: 0;
+      padding: 0;
+    }
+
+
+    h1 {
+      padding-top: 50px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 50px 0;
+    }
+
+
+    .gallery img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+
+    .comment-box {
+      margin: 50px auto;
+      width: 80%;
+      max-width: 800px;
+    }
+
+
+    .comment-box textarea {
+      width: 100%;
+      height: 80px;
+      border-radius: 5px;
+      border: none;
+      padding: 10px;
+      resize: none;
+      font-size: 14px;
+    }
+    /* ⭐ 左下角留言框 */
+#commentList {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+
+
+  width: 260px;
+  max-height: 300px;
+  overflow-y: auto;
+
+
+  background-color: rgba(255,255,255,0.8);
+  padding: 10px;
+  border-radius: 10px;
+
+
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+
+/* ⭐ 每個留言的小框 */
+#commentList p {
+  background: white;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <h1>我的畫畫作品 🎨</h1>
+
+
+  <div class="gallery">
+    <img src="images/pic1.jpg">
+    <img src="images/pic2.jpg">
+    <img src="images/pic3.jpg">
+    <img src="images/pic4.jpg">
+    <img src="images/pic5.jpg">
+    <img src="images/pic6.jpg">
+    <img src="images/pic7.jpg">
+    <img src="images/pic8.jpg">
+    <img src="images/pic9.jpg">
+    <img src="images/pic10.jpg">
+  </div>
+
+
+  <!-- ✅ 只保留這一個留言區 -->
+  <div class="comment-box">
+    <h2>留言區</h2>
+
+
+    <textarea id="commentInput" placeholder="來都來了，寫點評論吧(｡◕‿◕｡)…"></textarea>
+    <br><br>
+    <button type="button" onclick="addComment()">送出</button>
+
+
+    <div id="commentList"></div>
+  </div>
+
+
+  <!-- ✅ JS 一定要在 body 裡面最下面 -->
+  <script>
+  let comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+
+  function showComments() {
+    let list = document.getElementById("commentList");
+    list.innerHTML = "";
+    comments.forEach(text => {
+      let p = document.createElement("p");
+      p.textContent = text;
+      list.appendChild(p);
+    });
+  }
+
+
+  function addComment() {
+    let input = document.getElementById("commentInput");
+    let text = input.value.trim();
+
+
+    if (text === "") return;
+
+
+    comments.push(text);
+    localStorage.setItem("comments", JSON.stringify(comments));
+
+
+    input.value = "";
+    showComments();
+  }
+
+
+  showComments();
+  </script>
+
+
+</body>
+</html>
+
