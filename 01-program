@@ -108,7 +108,7 @@
   </div>
 
 
-  <!-- ✅ 只保留這一個留言區 -->
+  <!-- 只保留這一個留言區 -->
   <div class="comment-box">
     <h2>留言區</h2>
 
@@ -122,7 +122,7 @@
   </div>
 
 
-  <!-- ✅ JS 一定要在 body 裡面最下面 -->
+  <!-- JS 一定要在 body 裡面最下面 -->
   <script>
   let comments = JSON.parse(localStorage.getItem("comments")) || [];
 
