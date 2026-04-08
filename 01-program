@@ -54,7 +54,7 @@
       resize: none;
       font-size: 14px;
     }
-    /* ⭐ 左下角留言框 */
+    /*  左下角留言框 */
 #commentList {
   position: fixed;
   bottom: 20px;
@@ -75,7 +75,7 @@
 }
 
 
-/* ⭐ 每個留言的小框 */
+/* 每個留言的小框 */
 #commentList p {
   background: white;
   padding: 5px;
